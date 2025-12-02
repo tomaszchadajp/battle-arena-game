@@ -1,0 +1,39 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:BattleGameApp.ViewModels"
+             x:Class="BattleGameApp.Views.BattlePage"
+             BackgroundColor="Black">
+
+    <ContentPage.BindingContext>
+        <vm:GameViewModel />
+    </ContentPage.BindingContext>
+
+    <VerticalStackLayout Padding="20" Spacing="15">
+        <Label Text="{Binding Player.Name}" TextColor="White"/>
+        <ProgressBar Progress="{Binding Player.HealthPercent}" HeightRequest="10"/>
+
+        <Label Text="{Binding Enemy.Name}" TextColor="White"/>
+        <ProgressBar Progress="{Binding Enemy.HealthPercent}" HeightRequest="10"/>
+
+        <CollectionView ItemsSource="{Binding PlayerCards}" SelectionMode="Single" SelectedItem="{Binding SelectedCard}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame BorderColor="White" Padding="10" Margin="5">
+                        <Label Text="{Binding}" TextColor="White"/>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Button Text="Wykonaj Turę" BackgroundColor="#4caf50" TextColor="White"
+                Clicked="OnPlayTurn"/>
+
+        <CollectionView ItemsSource="{Binding Logs}" HeightRequest="200">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Label Text="{Binding}" TextColor="White"/>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+</ContentPage>

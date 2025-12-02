@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:BattleGameApp.ViewModels"
+             xmlns:models="clr-namespace:BattleGameApp.Models"
+             BackgroundColor="Black"
+             x:Class="BattleGameApp.MainPage">
+    <VerticalStackLayout Padding="30" Spacing="20">
+        <Label Text="Battle Game" FontSize="30" TextColor="White" HorizontalOptions="Center"/>
+        <Button Text="Graj!" FontSize="20" BackgroundColor="#4caf50" TextColor="White"
+                Clicked="OnStartGame"/>
+    </VerticalStackLayout>
+</ContentPage>
