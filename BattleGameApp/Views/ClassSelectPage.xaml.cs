@@ -37,27 +37,27 @@ public partial class ClassSelectPage : ContentPage
             ClassImage.Source = ImageSource.FromFile(imageFile);
         }
 
-        private void OnPreviousClass(object sender, System.EventArgs e)
+        private void OnPreviousClassClicked(object sender, System.EventArgs e)
         {
             currentIndex--;
             if (currentIndex < 0) currentIndex = classes.Count - 1;
             UpdateClassDisplay();
         }
 
-        private void OnNextClass(object sender, System.EventArgs e)
+        private void OnNextClassClicked(object sender, System.EventArgs e)
         {
             currentIndex++;
             if (currentIndex >= classes.Count) currentIndex = 0;
             UpdateClassDisplay();
         }
 
-        private async void OnStartBattle(object sender, System.EventArgs e)
-        {
+        private async void OnStartBattleClicked(object sender, System.EventArgs e)
+    {
             var selectedCharacter = classes[currentIndex];
 
             var battlePage = new BattlePage();
-        battlePage.ViewModel.StartBattle(selectedCharacter);
+            battlePage.ViewModel.StartBattle(selectedCharacter);
 
-        await Navigation.PushAsync(battlePage);
+            await Navigation.PushAsync(battlePage);
         }
 }

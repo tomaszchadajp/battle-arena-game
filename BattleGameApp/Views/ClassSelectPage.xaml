@@ -8,9 +8,9 @@
             <Label Text="Wybierz klasę postaci" TextColor="White" FontSize="24" HorizontalOptions="Center"/>
 
             <Grid RowDefinitions="Auto" ColumnDefinitions="50,*,50" HorizontalOptions="Center" VerticalOptions="Center">
-                <Button Text="◀" TextColor="White" BackgroundColor="#555" Clicked="OnPreviousClass"/>
+                <Button Text="◀" TextColor="White" BackgroundColor="#555" Clicked="OnPreviousClassClicked"/>
                 <Image x:Name="ClassImage" Grid.Column="1" HeightRequest="200" WidthRequest="200" Aspect="AspectFit"/>
-                <Button Text="▶" TextColor="White" BackgroundColor="#555" Grid.Column="2" Clicked="OnNextClass"/>
+                <Button Text="▶" TextColor="White" BackgroundColor="#555" Grid.Column="2" Clicked="OnNextClassClicked"/>
             </Grid>
 
             <Label x:Name="ClassNameLabel"
@@ -35,6 +35,6 @@
                    TextColor="White"/>
         </VerticalStackLayout>
         <Button Text="Rozpocznij walkę" BackgroundColor="#4caf50" TextColor="White"
-                Clicked="OnStartBattle"/>
+                Clicked="OnStartBattleClicked" />
     </VerticalStackLayout>
 </ContentPage>
