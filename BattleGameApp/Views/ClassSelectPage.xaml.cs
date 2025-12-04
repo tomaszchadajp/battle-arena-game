@@ -1,11 +1,10 @@
-using BattleGameApp.Models;
-using BattleGameApp.ViewModels;
+﻿using BattleGameApp.Models;
 
 namespace BattleGameApp.Views;
 
 public partial class ClassSelectPage : ContentPage
 {
-        private List<Character> classes = new List<Character>
+        private List<Character> classes = new()
         {
             new Warrior(),
             new Mage(),
@@ -25,14 +24,14 @@ public partial class ClassSelectPage : ContentPage
 
             ClassNameLabel.Text = selected.Name;
             ClassDescriptionLabel.Text = selected.Description;
-            ClassHealthLabel.Text = $"Punkty �ycia: {selected.MaxHealth}";
-            ClassStrengthLabel.Text = $"Si�a ataku: {selected.Strength}";
+            ClassHealthLabel.Text = $"❤️ Punkty życia: {selected.MaxHealth}";
+            ClassStrengthLabel.Text = $"🗡️ Siła ataku: {selected.Strength}";
 
             var imageFile = selected.Name switch
             {
                 "Wojownik" => "Warrior.png",
                 "Mag" => "Mage.png",
-                "�ucznik" => "Archer.png",
+                "Łucznik" => "Archer.png",
             };
 
             ClassImage.Source = ImageSource.FromFile(imageFile);
@@ -57,9 +56,8 @@ public partial class ClassSelectPage : ContentPage
             var selectedCharacter = classes[currentIndex];
 
             var battlePage = new BattlePage();
-            battlePage.BindingContext = new GameViewModel();
-            ((GameViewModel)battlePage.BindingContext).StartBattle(selectedCharacter);
+        battlePage.ViewModel.StartBattle(selectedCharacter);
 
-            await Navigation.PushAsync(battlePage);
+        await Navigation.PushAsync(battlePage);
         }
 }

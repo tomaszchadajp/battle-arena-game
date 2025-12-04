@@ -8,6 +8,6 @@
     <VerticalStackLayout Padding="30" Spacing="20">
         <Label Text="Battle Game" FontSize="30" TextColor="White" HorizontalOptions="Center"/>
         <Button Text="Graj!" FontSize="20" BackgroundColor="#4caf50" TextColor="White"
-                Clicked="OnStartGame"/>
+                Clicked="OnStartGameClicked"/>
     </VerticalStackLayout>
 </ContentPage>

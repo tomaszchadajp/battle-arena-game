@@ -9,9 +9,9 @@ namespace BattleGameApp
             InitializeComponent();
         }
 
-        private async void OnStartGame(object sender, EventArgs e)
+        private async void OnStartGameClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new ClassSelectPage());
+            await Navigation.PushAsync(new ClassSelectPage(), false);
         }
     }
 }
