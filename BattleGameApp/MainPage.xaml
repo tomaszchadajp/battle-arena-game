@@ -5,9 +5,12 @@
              xmlns:models="clr-namespace:BattleGameApp.Models"
              BackgroundColor="Black"
              x:Class="BattleGameApp.MainPage">
-    <VerticalStackLayout Padding="30" Spacing="20">
+    <VerticalStackLayout Padding="30" Spacing="20" VerticalOptions="Center">
         <Label Text="Battle Game" FontSize="30" TextColor="White" HorizontalOptions="Center"/>
-        <Button Text="Graj!" FontSize="20" BackgroundColor="#4caf50" TextColor="White"
+        <Button Text="Graj!" 
+                FontSize="20" 
+                BackgroundColor="#4caf50" 
+                TextColor="White"
                 Clicked="OnStartGameClicked"/>
     </VerticalStackLayout>
 </ContentPage>
