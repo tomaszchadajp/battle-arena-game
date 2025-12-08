@@ -20,21 +20,13 @@ public partial class ClassSelectPage : ContentPage
 
         private void UpdateClassDisplay()
         {
-            var selected = classes[currentIndex];
+            var selectedClass = classes[currentIndex];
 
-            ClassNameLabel.Text = selected.Name;
-            ClassDescriptionLabel.Text = selected.Description;
-            ClassHealthLabel.Text = $"❤️ Punkty życia: {selected.MaxHealth}";
-            ClassStrengthLabel.Text = $"🗡️ Siła ataku: {selected.Strength}";
-
-            var imageFile = selected.Name switch
-            {
-                "Wojownik" => "Warrior.png",
-                "Mag" => "Mage.png",
-                "Łucznik" => "Archer.png",
-            };
-
-            ClassImage.Source = ImageSource.FromFile(imageFile);
+            ClassNameLabel.Text = selectedClass.Name;
+            ClassDescriptionLabel.Text = selectedClass.Description;
+            ClassHealthLabel.Text = $"❤️ Punkty życia: {selectedClass.MaxHealth}";
+            ClassStrengthLabel.Text = $"🗡️ Siła ataku: {selectedClass.Strength}";
+            ClassImage.Source = ImageSource.FromFile(selectedClass.ImagePath);
         }
 
         private void OnPreviousClassClicked(object sender, System.EventArgs e)

@@ -2,7 +2,7 @@ namespace BattleGameApp.Models
 {
     public class Archer : Character
     {
-        public Archer() : base("£ucznik", 100, 12, "Szybki i celny. Zbalansowane statystyki") { }
+        public Archer() : base("£ucznik", 100, 12, "Szybki i celny. Zbalansowane statystyki", "archer.png") { }
 
         public override string Attack(Character target)
         {

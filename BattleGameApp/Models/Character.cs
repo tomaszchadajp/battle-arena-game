@@ -7,17 +7,19 @@ namespace BattleGameApp.Models
         public int MaxHealth;
         public int Strength;
         public string Description;
+        public string ImagePath;
 
         public bool IsAlive => Health > 0;
         public double HealthPercent => (double)Health / MaxHealth;
 
-        protected Character(string name, int hp, int strength, string description)
+        protected Character(string name, int hp, int strength, string description, string imagePath)
         {
             Name = name;
             MaxHealth = hp;
             Health = hp;
             Strength = strength;
             Description = description;
+            ImagePath = imagePath;
         }
 
         public void ReceiveDamage(int amount)

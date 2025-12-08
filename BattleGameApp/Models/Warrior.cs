@@ -2,7 +2,7 @@
 {
     public class Warrior : Character
     {
-        public Warrior() : base("Wojownik", 120, 15, "Wojownik walczący mieczem. Dużo HP, stabilne obrażenia.") {}
+        public Warrior() : base("Wojownik", 120, 15, "Wojownik walczący mieczem. Dużo HP, stabilne obrażenia.", "warrior.png") {}
 
         public override string Attack(Character target)
         {
