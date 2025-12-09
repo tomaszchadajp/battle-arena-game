@@ -31,6 +31,6 @@ namespace BattleGameApp.Models
             }
         }
 
-        public abstract string Attack(Character target);
+        public abstract int Attack(Character target);
     }
 }

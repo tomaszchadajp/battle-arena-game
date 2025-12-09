@@ -4,9 +4,7 @@
              x:Class="BattleGameApp.Views.ClassSelectPage"
              BackgroundColor="Black">
     <VerticalStackLayout Spacing="20" HorizontalOptions="Center" VerticalOptions="Center" Margin="20">
-
         <Label Text="Wybierz klasę postaci" TextColor="White" FontSize="24" HorizontalOptions="Center"/>
-
             <Grid RowDefinitions="Auto" ColumnDefinitions="50,*,50" HorizontalOptions="Center" VerticalOptions="Center">
                 <Button Text="◀" TextColor="White" BackgroundColor="#555" Clicked="OnPreviousClassClicked"/>
                 <Image x:Name="ClassImage" Grid.Column="1" HeightRequest="200" WidthRequest="200" Aspect="AspectFit"/>

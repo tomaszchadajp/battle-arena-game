@@ -4,6 +4,7 @@ namespace BattleGameApp.Views;
 
 public partial class ClassSelectPage : ContentPage
 {
+        
         private List<Character> classes = new()
         {
             new Warrior(),
@@ -11,7 +12,7 @@ public partial class ClassSelectPage : ContentPage
             new Archer()
         };
         private int currentIndex = 0;
-
+        private readonly Random randomInstance = new();
         public ClassSelectPage()
         {
             InitializeComponent();
@@ -44,12 +45,12 @@ public partial class ClassSelectPage : ContentPage
         }
 
         private async void OnStartBattleClicked(object sender, System.EventArgs e)
-    {
+        {
             var selectedCharacter = classes[currentIndex];
-
-            var battlePage = new BattlePage();
-            battlePage.ViewModel.StartBattle(selectedCharacter);
+            var battlePage = new BattlePage(selectedCharacter);
 
             await Navigation.PushAsync(battlePage);
-        }
+
+            battlePage.StartBattle();
+    }
 }

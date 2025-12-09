@@ -4,7 +4,7 @@ namespace BattleGameApp.Models
     {
         public Archer() : base("£ucznik", 100, 12, "Szybki i celny. Zbalansowane statystyki", "archer.png") { }
 
-        public override string Attack(Character target)
+        public override int Attack(Character target)
         {
             int dmg = Strength;
 
@@ -16,7 +16,7 @@ namespace BattleGameApp.Models
 
             target.ReceiveDamage(dmg);
 
-            return $"{Name} strzela za {dmg} dmg! {(isCriticalAttack ? "(Atak krytyczny)" : "")} {target.Name} ma {target.Health} HP.";
+            return dmg;
         }
     }
 }

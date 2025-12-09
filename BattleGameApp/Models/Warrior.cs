@@ -4,12 +4,12 @@
     {
         public Warrior() : base("Wojownik", 120, 15, "Wojownik walczący mieczem. Dużo HP, stabilne obrażenia.", "warrior.png") {}
 
-        public override string Attack(Character target)
+        public override int Attack(Character target)
         {
             int dmg = Strength;
             target.ReceiveDamage(dmg);
 
-            return $"{Name} uderza za {dmg} dmg! {target.Name} ma {target.Health} HP.";
+            return dmg;
         }
     }
 }
