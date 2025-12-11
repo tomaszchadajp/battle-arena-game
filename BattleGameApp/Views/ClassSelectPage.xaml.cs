@@ -1,10 +1,10 @@
 ﻿using BattleGameApp.Models;
 
-namespace BattleGameApp.Views;
-
-public partial class ClassSelectPage : ContentPage
+namespace BattleGameApp.Views
 {
-        
+    public partial class ClassSelectPage : ContentPage
+    {
+
         private List<Character> classes = new()
         {
             new Warrior(),
@@ -12,7 +12,6 @@ public partial class ClassSelectPage : ContentPage
             new Archer()
         };
         private int currentIndex = 0;
-        private readonly Random randomInstance = new();
         public ClassSelectPage()
         {
             InitializeComponent();
@@ -33,14 +32,22 @@ public partial class ClassSelectPage : ContentPage
         private void OnPreviousClassClicked(object sender, System.EventArgs e)
         {
             currentIndex--;
-            if (currentIndex < 0) currentIndex = classes.Count - 1;
+            if (currentIndex < 0)
+            {
+                currentIndex = classes.Count - 1;
+            }
+
             UpdateClassDisplay();
         }
 
         private void OnNextClassClicked(object sender, System.EventArgs e)
         {
             currentIndex++;
-            if (currentIndex >= classes.Count) currentIndex = 0;
+            if (currentIndex >= classes.Count)
+            {
+                currentIndex = 0;
+            }
+
             UpdateClassDisplay();
         }
 
@@ -52,5 +59,6 @@ public partial class ClassSelectPage : ContentPage
             await Navigation.PushAsync(battlePage);
 
             battlePage.StartBattle();
+        }
     }
 }

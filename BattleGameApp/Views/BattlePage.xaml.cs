@@ -13,8 +13,7 @@ namespace BattleGameApp.Views
         };
 
         private readonly Random randomInstance = new();
-
-        private const int attackDelayMs = 1000;
+        private readonly int attackDelayMs = 1000;
 
         private readonly Character player;
         private readonly Character enemy;
