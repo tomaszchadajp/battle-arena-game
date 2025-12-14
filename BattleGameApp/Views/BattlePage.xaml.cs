@@ -12,79 +12,85 @@ namespace BattleGameApp.Views
             new Archer()
         };
 
-        private readonly Random randomInstance = new();
-        private readonly int attackDelayMs = 1000;
+        private readonly Random random = new();
 
-        private readonly Character player;
-        private readonly Character enemy;
-        private bool canContinueBattle => player.IsAlive && enemy.IsAlive;
+        private Character player;
+        private Character enemy;
 
         public ObservableCollection<string> Logs { get; } = new();
 
-        public BattlePage(Character choosenPlayerClass)
+        public BattlePage(Character chosen)
         {
             InitializeComponent();
-
             BindingContext = this;
-            player = choosenPlayerClass;
-            enemy = PickRandomEnemy();
+
+            player = chosen;
+            enemy = PickEnemy();
 
             UpdateUI();
         }
 
-        private Character PickRandomEnemy()
+        private Character PickEnemy()
         {
-            return classes[randomInstance.Next(classes.Count)];
+            var pick = classes[random.Next(classes.Count)];
+
+            return pick;
         }
 
         private void UpdateUI()
         {
             PlayerImage.Source = player.ImagePath;
             PlayerNameLabel.Text = player.Name;
-            PlayerHealthLabel.Text = $"HP: {player.Health}/{player.MaxHealth}";
+            PlayerHealthLabel.Text = $"{player.Health}/{player.MaxHealth} HP";
+            PlayerHealthBar.Progress = (double)player.Health / player.MaxHealth;
 
             EnemyImage.Source = enemy.ImagePath;
             EnemyNameLabel.Text = enemy.Name;
-            EnemyHealthLabel.Text = $"HP: {enemy.Health}/{enemy.MaxHealth}";
+            EnemyHealthLabel.Text = $"{enemy.Health}/{enemy.MaxHealth} HP";
+            EnemyHealthBar.Progress = (double)enemy.Health / enemy.MaxHealth;
         }
 
-        public async void StartBattle()
+        private async void OnAttackClicked(object sender, EventArgs e)
         {
-            Logs.Add("⚔️ WALKA ROZPOCZĘTA!");
+            if (!player.IsAlive || !enemy.IsAlive)
+                return;
 
-            await FightLoop();
-        }
+            var dealt = player.Attack(enemy);
+            Logs.Add($"🟢 {player.Name} zadaje {dealt} obrażeń");
 
-        private async Task FightLoop()
-        {
-            while (canContinueBattle)
+            await AnimateHit(EnemyImage);
+            UpdateUI();
+
+            if (!enemy.IsAlive)
             {
-                int playerDmg = player.Attack(enemy);
-                Logs.Add($"🟢 {player.Name} (Ty) zadaje {playerDmg} punktów obrażeń");
+                Logs.Add("🏆 WYGRAŁEŚ!");
+                return;
+            }
 
-                UpdateUI();
-                if (!enemy.IsAlive)
-                {
-                    Logs.Add("🏆 Wygrana!");
-                    break;
-                }
-                await Task.Delay(attackDelayMs);
+            await Task.Delay(700);
 
-                int enemyDmg = enemy.Attack(player);
-                Logs.Add($"🔴 {enemy.Name} (Przeciwnik) zadaje {enemyDmg} punktów obrażeń");
+            var received = enemy.Attack(player);
+            Logs.Add($"🔴 {enemy.Name} zadaje {received} obrażeń");
 
-                UpdateUI();
-                if (!player.IsAlive)
-                {
-                    Logs.Add("💀 Przegrana...");
-                    break;
-                }
-                await Task.Delay(attackDelayMs);
+            await AnimateHit(PlayerImage);
+            UpdateUI();
+
+            if (!player.IsAlive)
+            {
+                Logs.Add("💀 PRZEGRAŁEŚ...");
             }
         }
 
-        public void OnRestartClicked(object sender, EventArgs e) {
-            throw new NotImplementedException();
+        private async Task AnimateHit(Image img)
+        {
+            await img.TranslateTo(-10, 0, 60);
+            await img.TranslateTo(10, 0, 60);
+            await img.TranslateTo(0, 0, 60);
+        }
+
+        private async void OnRestartClicked(object sender, EventArgs e)
+        {
+            await Navigation.PopToRootAsync();
         }
     }
 }

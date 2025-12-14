@@ -57,8 +57,6 @@ namespace BattleGameApp.Views
             var battlePage = new BattlePage(selectedCharacter);
 
             await Navigation.PushAsync(battlePage);
-
-            battlePage.StartBattle();
         }
     }
 }
