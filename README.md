@@ -13,4 +13,4 @@
   - Aktualnie reset powoduje powrót do głównego menu gry zamiast płynnego restartu starcia.
 
 * 🔸 **Interfejs użytkownika**
-  **nie jest jeszcze tak estetyczne**
+  **nie jest jeszcze tak estetyczny**
