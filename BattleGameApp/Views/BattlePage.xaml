@@ -117,28 +117,31 @@
                     HeightRequest="46"
                     WidthRequest="150"/>
         </VerticalStackLayout>
-        <Border Background="#151515"
-                StrokeShape="RoundRectangle 20"
-                Padding="10">
-            <VerticalStackLayout Spacing="8">
-
-                <Label Text="📜 Przebieg walki"
-                       TextColor="#AAAAAA"
-                       FontSize="14"
-                       HorizontalTextAlignment="Center"/>
-
-                <CollectionView ItemsSource="{Binding Logs}"
-                                HeightRequest="240">
+            <Border Grid.Row="2"
+                    Background="#151515"
+                    StrokeShape="RoundRectangle 20"
+                    Padding="10"
+                    MaximumHeightRequest="260">
+            <Grid RowDefinitions="Auto,*">
+                <Label Grid.Row="0"
+               Text="📜 Przebieg walki"
+               TextColor="#AAAAAA"
+               FontSize="14"
+               HorizontalTextAlignment="Center"
+               Margin="0,0,0,6"/>
+                <CollectionView Grid.Row="1"
+                        x:Name="LogsView"
+                        ItemsSource="{Binding Logs}">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Label Text="{Binding}"
-                                   TextColor="White"
-                                   FontSize="14"
-                                   Margin="4,2"/>
+                           TextColor="White"
+                           FontSize="14"
+                           Margin="4,2"/>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-            </VerticalStackLayout>
+            </Grid>
         </Border>
     </VerticalStackLayout>
 </ContentPage> 
