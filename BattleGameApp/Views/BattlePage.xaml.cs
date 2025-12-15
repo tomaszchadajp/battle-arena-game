@@ -12,6 +12,8 @@ namespace BattleGameApp.Views
             new Archer()
         };
 
+        private readonly int attackDelay = 1000;
+
         private readonly Random random = new();
 
         private Character player;
@@ -50,11 +52,17 @@ namespace BattleGameApp.Views
             EnemyHealthBar.Progress = (double)enemy.Health / enemy.MaxHealth;
         }
 
-        private async void OnAttackClicked(object sender, EventArgs e)
+        public async void StartGame()
         {
-            if (!player.IsAlive || !enemy.IsAlive)
-                return;
+            while (player.IsAlive && enemy.IsAlive)
+            {
 
+                await MakeATurn();
+            }
+        }
+
+        private async Task MakeATurn()
+        {
             var dealt = player.Attack(enemy);
             Logs.Add($"🟢 {player.Name} zadaje {dealt} obrażeń");
 
@@ -67,7 +75,7 @@ namespace BattleGameApp.Views
                 return;
             }
 
-            await Task.Delay(700);
+            await Task.Delay(attackDelay);
 
             var received = enemy.Attack(player);
             Logs.Add($"🔴 {enemy.Name} zadaje {received} obrażeń");
@@ -79,6 +87,8 @@ namespace BattleGameApp.Views
             {
                 Logs.Add("💀 PRZEGRAŁEŚ...");
             }
+
+            await Task.Delay(attackDelay);
         }
 
         private async Task AnimateHit(Image img)

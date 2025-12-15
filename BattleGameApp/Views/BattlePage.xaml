@@ -98,16 +98,6 @@
         </Grid>
         <VerticalStackLayout Spacing="14"
                              HorizontalOptions="Center">
-
-            <Button Text="⚔️ ATAK"
-                    Clicked="OnAttackClicked"
-                    BackgroundColor="#3949AB"
-                    TextColor="White"
-                    FontSize="20"
-                    CornerRadius="14"
-                    HeightRequest="56"
-                    WidthRequest="200"/>
-
             <Button Text="⟲ Restart"
                     Clicked="OnRestartClicked"
                     BackgroundColor="#555"
