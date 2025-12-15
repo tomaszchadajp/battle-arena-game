@@ -2,8 +2,8 @@
 
 ## 👥 Autorzy
 
-* **@tomaszchadajp** – logika gry, architektura projektu
-* **@wpjt3k** – logika gry, pomysły
+* **@tomaszchadajp** (Damian) – logika gry, architektura projektu
+* **@wpjt3k** (Wojtek) – logika gry, pomysły
 
 ### Obecne problemy
 
