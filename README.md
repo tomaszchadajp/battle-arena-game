@@ -5,6 +5,10 @@
 * **@tomaszchadajp** (Damian) – logika gry, architektura projektu
 * **@wpjt3k** (Wojtek) – logika gry, pomysły
 
+## ❗WAŻNE!
+
+> Proszę uruchamiać aplikację w widoku mobilnym, do którego została przewidziana — w widoku desktopowym interfejs wygląda bardzo pusto.
+
 ### Obecne problemy
 
 * 🔸 **System walki jest jeszcze słabo zaawansowany**
